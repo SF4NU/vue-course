@@ -1,47 +1,34 @@
 <script setup>
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
+import { ref } from "vue";
+const firstName = ref("Luigi");
+const lastName = ref("Mario");
+const number = ref(7);
+import PropsComponent from "./components/PropsComponent.vue";
+import DynamicPropsComponent from "./components/DynamicPropsComponent.vue";
+import ChangePropsValue from "./components/ChangePropsValue.vue";
+import PropValidation from "./components/PropValidation.vue";
+import ComplexProps from "./components/ComplexProps.vue";
+import CustomValidator from "./components/CustomValidator.vue";
 </script>
 
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-    </div>
-  </header>
-
-  <main>
-    <TheWelcome />
-  </main>
+  <PropsComponent name="Chris" />
+  <hr />
+  <DynamicPropsComponent :firstName="firstName" :lastName="lastName" />
+  <hr />
+  <ChangePropsValue :number="number" />
+  <hr />
+  <PropValidation fullName="Bowser" :age="20" />
+  <hr />
+  <ComplexProps
+    :friends="['Alex', 'John', 'Chris', 'Luigi']"
+    :userInfo="{ name: 'alex', age: 20, location: ['NYC', 'idk'] }" />
+  <hr />
+  <CustomValidator name="Peach" :age="20" password="passwordssss" />
 </template>
 
-<style scoped>
-header {
-  line-height: 1.5;
-}
-
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
+<style>
+body {
+  height: 1500px;
 }
 </style>
